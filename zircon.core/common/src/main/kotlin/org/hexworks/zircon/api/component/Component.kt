@@ -1,6 +1,7 @@
 package org.hexworks.zircon.api.component
 
 import org.hexworks.zircon.api.behavior.InputEmitter
+import org.hexworks.zircon.api.behavior.Themeable
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
 import org.hexworks.zircon.api.data.Tile
@@ -18,7 +19,7 @@ import org.hexworks.zircon.internal.behavior.Identifiable
  * like a label or a check box is a [Container] while a label which is only intended to
  * display information is a [Component].
  */
-interface Component : Identifiable, InputEmitter, Layer {
+interface Component : Identifiable, InputEmitter, Layer, Themeable {
 
     /**
      * The [Position] where the content of this [Component] starts
@@ -55,12 +56,6 @@ interface Component : Identifiable, InputEmitter, Layer {
      * Detaches this [Component] from its parent (if any).
      */
     fun detach()
-
-    /**
-     * Applies a [ColorTheme] to this component and recursively to all its children (if any).
-     * @return the [ComponentStyleSet] which the [ColorTheme] was converted to
-     */
-    fun applyColorTheme(colorTheme: ColorTheme): ComponentStyleSet
 
     /**
      * Requests that this [Component] be focused.

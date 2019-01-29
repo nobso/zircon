@@ -1,6 +1,6 @@
 package org.hexworks.zircon.api.listener
 
-import org.hexworks.zircon.api.input.Input
+import org.hexworks.zircon.api.uievent.Input
 
 /**
  * Listener interface for [Input]s.

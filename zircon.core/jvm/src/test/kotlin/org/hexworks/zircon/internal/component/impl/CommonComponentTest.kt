@@ -6,10 +6,10 @@ import org.hexworks.zircon.api.component.ComponentStyleSet
 import org.hexworks.zircon.api.component.data.ComponentMetadata
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.api.kotlin.*
 import org.hexworks.zircon.api.resource.BuiltInCP437TilesetResource
 import org.hexworks.zircon.api.resource.ColorThemeResource

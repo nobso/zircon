@@ -5,7 +5,7 @@ import org.hexworks.zircon.api.Sizes;
 import org.hexworks.zircon.api.SwingApplications;
 import org.hexworks.zircon.api.data.Size;
 import org.hexworks.zircon.api.grid.TileGrid;
-import org.hexworks.zircon.api.input.MouseAction;
+import org.hexworks.zircon.api.uievent.MouseAction;
 import org.hexworks.zircon.api.listener.MouseAdapter;
 import org.hexworks.zircon.api.listener.MouseListener;
 import org.hexworks.zircon.api.resource.BuiltInCP437TilesetResource;

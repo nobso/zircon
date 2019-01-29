@@ -11,10 +11,10 @@ import org.hexworks.zircon.api.component.TextArea
 import org.hexworks.zircon.api.component.data.ComponentMetadata
 import org.hexworks.zircon.api.component.renderer.ComponentRenderingStrategy
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
 import org.hexworks.zircon.api.util.TextUtils
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.behavior.impl.DefaultScrollable

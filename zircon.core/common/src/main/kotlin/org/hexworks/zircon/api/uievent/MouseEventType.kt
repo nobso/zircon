@@ -1,9 +1,9 @@
-package org.hexworks.zircon.api.input
+package org.hexworks.zircon.api.uievent
 
 /**
- * Enum type for the different kinds of mouse actions supported
+ * Event type for the different kinds of mouse actions supported.
  */
-enum class MouseActionType {
+enum class MouseEventType : UIEventType {
     /**
      * A mouse button has been clicked (pressed
      * and released) on a component.

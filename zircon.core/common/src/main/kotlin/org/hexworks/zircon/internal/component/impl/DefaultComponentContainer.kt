@@ -11,10 +11,10 @@ import org.hexworks.zircon.api.component.ComponentContainer
 import org.hexworks.zircon.api.component.ComponentStyleSet
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.graphics.Layer
-import org.hexworks.zircon.api.input.InputType.*
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.InputType.*
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.behavior.ComponentFocusHandler
 import org.hexworks.zircon.internal.behavior.impl.DefaultComponentFocusHandler
@@ -88,7 +88,7 @@ class DefaultComponentContainer(private var root: RootContainer) :
                     is MouseAction -> {
                         // this is necessary because listeners are notified this way
                         component.inputEmitted(input)
-                        when (input.actionType) {
+                        when (input.eventType) {
                             MOUSE_CLICKED -> component.mouseClicked(input)
                             MOUSE_PRESSED -> {
                                 focus(component)
@@ -157,10 +157,10 @@ class DefaultComponentContainer(private var root: RootContainer) :
                 } else {
                     // we also need to emit input because listeners
                     // dispatch on the input event
-                    lastHoveredComponent.inputEmitted(mouseAction.copy(actionType = MOUSE_EXITED))
+                    lastHoveredComponent.inputEmitted(mouseAction.copy(eventType = MOUSE_EXITED))
                     lastHoveredComponent.mouseExited(mouseAction)
                     lastHoveredComponent = currentComponent
-                    currentComponent.inputEmitted(mouseAction.copy(actionType = MOUSE_ENTERED))
+                    currentComponent.inputEmitted(mouseAction.copy(eventType = MOUSE_ENTERED))
                     currentComponent.mouseEntered(mouseAction)
                 }
             }

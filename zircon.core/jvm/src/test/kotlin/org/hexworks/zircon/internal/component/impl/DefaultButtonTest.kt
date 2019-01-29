@@ -13,9 +13,9 @@ import org.hexworks.zircon.api.component.renderer.ComponentRenderer
 import org.hexworks.zircon.api.component.renderer.impl.DefaultComponentRenderingStrategy
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
-import org.hexworks.zircon.api.input.MouseActionType.MOUSE_PRESSED
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
+import org.hexworks.zircon.api.uievent.MouseEventType.MOUSE_PRESSED
 import org.hexworks.zircon.internal.component.renderer.DefaultButtonRenderer
 import org.junit.Before
 import org.junit.Test
@@ -107,7 +107,7 @@ class DefaultButtonTest : ComponentImplementationTest<DefaultButton>() {
 
     @Test
     fun shouldProperlyHandleMouseRelease() {
-        target.mouseReleased(MouseAction(MouseActionType.MOUSE_RELEASED, 1, Position.defaultPosition()))
+        target.mouseReleased(MouseAction(MouseEventType.MOUSE_RELEASED, 1, Position.defaultPosition()))
 
         assertThat(target.componentStyleSet.currentState()).isEqualTo(MOUSE_OVER)
     }

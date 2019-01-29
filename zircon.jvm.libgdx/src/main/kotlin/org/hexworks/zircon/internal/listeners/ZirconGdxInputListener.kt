@@ -3,10 +3,10 @@ package org.hexworks.zircon.internal.listeners
 import com.badlogic.gdx.Input.Keys.*
 import com.badlogic.gdx.InputProcessor
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
 import org.hexworks.zircon.api.util.TextUtils
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.config.RuntimeConfig
@@ -134,18 +134,18 @@ class ZirconInputListener(private val fontWidth: Int,
     }
 
     override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-        addActionToKeyQueue(MouseActionType.MOUSE_RELEASED, screenX, screenY, button)
+        addActionToKeyQueue(MouseEventType.MOUSE_RELEASED, screenX, screenY, button)
         if (clicking) {
-            addActionToKeyQueue(MouseActionType.MOUSE_CLICKED, screenX, screenY, button)
+            addActionToKeyQueue(MouseEventType.MOUSE_CLICKED, screenX, screenY, button)
         }
         return true
     }
 
     override fun scrolled(amount: Int): Boolean {
         val actionType = if (amount > 0) {
-            MouseActionType.MOUSE_WHEEL_ROTATED_DOWN
+            MouseEventType.MOUSE_WHEEL_ROTATED_DOWN
         } else {
-            MouseActionType.MOUSE_WHEEL_ROTATED_UP
+            MouseEventType.MOUSE_WHEEL_ROTATED_UP
         }
         (0..amount).forEach {
             addActionToKeyQueue(actionType, 0, 0, NOBUTTON)
@@ -155,33 +155,33 @@ class ZirconInputListener(private val fontWidth: Int,
 
     override fun touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean {
         clicking = false
-        addActionToKeyQueue(MouseActionType.MOUSE_DRAGGED, screenX, screenY, NOBUTTON)
+        addActionToKeyQueue(MouseEventType.MOUSE_DRAGGED, screenX, screenY, NOBUTTON)
         return true
     }
 
     override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
         clicking = true
-        addActionToKeyQueue(MouseActionType.MOUSE_PRESSED, screenX, screenY, button)
+        addActionToKeyQueue(MouseEventType.MOUSE_PRESSED, screenX, screenY, button)
         return true
     }
 
     override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
-        addActionToKeyQueue(MouseActionType.MOUSE_MOVED, screenX, screenY, NOBUTTON)
+        addActionToKeyQueue(MouseEventType.MOUSE_MOVED, screenX, screenY, NOBUTTON)
         return true
     }
 
-    private fun addActionToKeyQueue(actionType: MouseActionType, x: Int, y: Int, button: Int) {
+    private fun addActionToKeyQueue(eventType: MouseEventType, x: Int, y: Int, button: Int) {
         try {
             val position = Position.create(
                     x = Math.max(0, x.div(fontWidth)),
                     y = Math.max(0, y.div(fontHeight)))
             MouseAction(
-                    actionType = actionType,
+                    eventType = eventType,
                     button = button,
                     position = position
             ).let {
-                if (mouseMovedToNewPosition(actionType, position)
-                                .or(isNotMoveEvent(actionType))) {
+                if (mouseMovedToNewPosition(eventType, position)
+                                .or(isNotMoveEvent(eventType))) {
                     lastMouseLocation = position
                     Zircon.eventBus.publish(
                             event = ZirconEvent.Input(it),
@@ -194,10 +194,10 @@ class ZirconInputListener(private val fontWidth: Int,
         }
     }
 
-    private fun isNotMoveEvent(actionType: MouseActionType) = actionType != MouseActionType.MOUSE_MOVED
+    private fun isNotMoveEvent(eventType: MouseEventType) = eventType != MouseEventType.MOUSE_MOVED
 
-    private fun mouseMovedToNewPosition(actionType: MouseActionType, position: Position) =
-            actionType == MouseActionType.MOUSE_MOVED && position != lastMouseLocation
+    private fun mouseMovedToNewPosition(eventType: MouseEventType, position: Position) =
+            eventType == MouseEventType.MOUSE_MOVED && position != lastMouseLocation
 
 
     private fun injectStringAsKeyStrokes(string: String) {

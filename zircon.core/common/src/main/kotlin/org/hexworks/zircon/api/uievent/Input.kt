@@ -1,10 +1,9 @@
-package org.hexworks.zircon.api.input
+package org.hexworks.zircon.api.uievent
 
 import org.hexworks.cobalt.datatypes.Maybe
 import org.hexworks.cobalt.datatypes.sam.Consumer
-import org.hexworks.cobalt.events.api.Subscription
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.InputType.*
+import org.hexworks.zircon.api.uievent.InputType.*
 import org.hexworks.zircon.platform.util.SystemUtils
 
 
@@ -25,6 +24,7 @@ import org.hexworks.zircon.platform.util.SystemUtils
  * - <code>InputType.Backspace</code>
  * respectively.
  */
+@Deprecated("Don't use it")
 sealed class Input(private val inputType: InputType,
                    private val eventTime: Long = SystemUtils.getCurrentTimeMs()) {
 
@@ -57,6 +57,7 @@ sealed class Input(private val inputType: InputType,
     }
 }
 
+@Deprecated("Don't use it")
 data class KeyStroke(
         private val character: Char = ' ',
         private val type: InputType = InputType.Character,
@@ -92,8 +93,9 @@ data class KeyStroke(
 /**
  * MouseAction, a Input in disguise, this class contains the information of a single mouse action event.
  */
+@Deprecated("Don't use it")
 data class MouseAction(
-        val actionType: MouseActionType,
+        val eventType: MouseEventType,
         val button: Int,
         val position: Position)
     : Input(

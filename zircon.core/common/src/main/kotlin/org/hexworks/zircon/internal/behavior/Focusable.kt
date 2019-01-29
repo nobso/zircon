@@ -1,7 +1,7 @@
 package org.hexworks.zircon.internal.behavior
 
 import org.hexworks.cobalt.datatypes.Maybe
-import org.hexworks.zircon.api.input.Input
+import org.hexworks.zircon.api.uievent.Input
 
 /**
  * Represents a GUI element which can receive focus.

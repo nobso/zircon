@@ -1,7 +1,7 @@
 package org.hexworks.zircon.internal.grid
 
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.KeyStroke
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.KeyStroke
 import org.hexworks.zircon.api.util.TextUtils
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.config.RuntimeConfig

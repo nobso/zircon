@@ -10,10 +10,10 @@ import org.hexworks.zircon.api.component.data.ComponentMetadata
 import org.hexworks.zircon.api.component.renderer.impl.DefaultComponentRenderingStrategy
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.api.kotlin.onMouseEntered
 import org.hexworks.zircon.api.kotlin.onMousePressed
 import org.hexworks.zircon.api.kotlin.onMouseReleased

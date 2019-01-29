@@ -1,6 +1,6 @@
 package org.hexworks.zircon.api.behavior.input
 
-import org.hexworks.zircon.api.input.InputType
+import org.hexworks.zircon.api.uievent.InputType
 
 data class KeyCombination(val char: Char = ' ',
                           val inputType: InputType = InputType.Character,

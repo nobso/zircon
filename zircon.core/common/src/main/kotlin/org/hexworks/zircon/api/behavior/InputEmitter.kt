@@ -4,11 +4,11 @@ import org.hexworks.cobalt.datatypes.extensions.map
 import org.hexworks.cobalt.datatypes.sam.Consumer
 import org.hexworks.cobalt.events.api.Subscription
 import org.hexworks.zircon.api.behavior.input.KeyCombination
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.api.listener.InputListener
 import org.hexworks.zircon.api.listener.KeyStrokeListener
 import org.hexworks.zircon.api.listener.MouseListener
@@ -28,7 +28,7 @@ interface InputEmitter {
 
     /**
      * Adds a [KeyStrokeListener] listener to this [InputEmitter]. It will be notified when a
-     * [org.hexworks.zircon.api.input.KeyStroke] is received by this object.
+     * [org.hexworks.zircon.api.uievent.KeyStroke] is received by this object.
      */
     fun onKeyStroke(listener: KeyStrokeListener): Subscription {
         return onInput(object : InputListener {
@@ -42,7 +42,7 @@ interface InputEmitter {
 
     /**
      * Adds a [KeyStrokeListener] listener to this [InputEmitter]. It will be notified when a
-     * [org.hexworks.zircon.api.input.KeyStroke] is received by this object and matches the
+     * [org.hexworks.zircon.api.uievent.KeyStroke] is received by this object and matches the
      * given key combination.
      */
     fun onKeyCombination(keyCombination: KeyCombination,
@@ -99,13 +99,13 @@ interface InputEmitter {
 
     /**
      * Adds a [MouseListener] listener to this [InputEmitter]. It will be notified when a
-     * [org.hexworks.zircon.api.input.MouseAction] is received by this object.
+     * [org.hexworks.zircon.api.uievent.MouseAction] is received by this object.
      */
     fun onMouseAction(listener: MouseListener): Subscription {
         return onInput(object : InputListener {
             override fun inputEmitted(input: Input) {
                 input.asMouseAction().map {
-                    when (it.actionType) {
+                    when (it.eventType) {
                         MOUSE_CLICKED -> listener.mouseClicked(it)
                         MOUSE_PRESSED -> listener.mousePressed(it)
                         MOUSE_RELEASED -> listener.mouseReleased(it)

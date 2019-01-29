@@ -3,10 +3,10 @@ package org.hexworks.zircon.internal.grid
 import org.assertj.core.api.Assertions.assertThat
 import org.hexworks.cobalt.events.api.subscribe
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.InputType.Character
-import org.hexworks.zircon.api.input.KeyStroke
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.InputType.Character
+import org.hexworks.zircon.api.uievent.KeyStroke
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.event.ZirconEvent
 import org.hexworks.zircon.internal.event.ZirconScope

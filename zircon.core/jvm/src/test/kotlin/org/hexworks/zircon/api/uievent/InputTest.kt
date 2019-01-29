@@ -1,4 +1,4 @@
-package org.hexworks.zircon.api.input
+package org.hexworks.zircon.api.uievent
 
 import org.assertj.core.api.Assertions.assertThat
 import org.hexworks.zircon.api.data.Position
@@ -50,13 +50,13 @@ class InputTest {
 
     @Test
     fun shouldBeAbleToGetMouseActionAsMouseAction() {
-        val input: Input = MouseAction(MouseActionType.MOUSE_CLICKED, 1, Position.defaultPosition())
+        val input: Input = MouseAction(MouseEventType.MOUSE_CLICKED, 1, Position.defaultPosition())
         input.asMouseAction()
     }
 
     private fun fetchMouseAction(): MouseAction {
         return MouseAction(
-                actionType = MouseActionType.MOUSE_WHEEL_ROTATED_UP,
+                eventType = MouseEventType.MOUSE_WHEEL_ROTATED_UP,
                 button = 1,
                 position = Position.defaultPosition()
         )

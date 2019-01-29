@@ -12,9 +12,8 @@ import org.hexworks.zircon.api.data.impl.Size3D
 import org.hexworks.zircon.api.game.GameArea
 import org.hexworks.zircon.api.graphics.Layer
 import org.hexworks.zircon.api.graphics.Symbols
-import org.hexworks.zircon.api.graphics.TileGraphics
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
 import org.hexworks.zircon.api.kotlin.onMouseAction
 import org.hexworks.zircon.api.kotlin.onSelection
 import org.hexworks.zircon.api.mvc.base.BaseView
@@ -69,7 +68,7 @@ object DrawingExample {
     class FreeDrawCommand : DrawCommand {
         override fun execute(context: Context, gameArea: GameArea<Tile, Block<Tile>>, mouseAction: MouseAction) {
             val (layer, offset) = context
-            if (mouseAction.actionType == MouseActionType.MOUSE_RELEASED) {
+            if (mouseAction.eventType == MouseEventType.MOUSE_RELEASED) {
                 layer.setTileAt(mouseAction.position - offset, TEST_TILE)
             }
         }
@@ -83,8 +82,8 @@ object DrawingExample {
 
         override fun execute(context: Context, gameArea: GameArea<Tile, Block<Tile>>, mouseAction: MouseAction) {
             val (layer, offset, level) = context
-            when(mouseAction.actionType) {
-                MouseActionType.MOUSE_PRESSED -> {
+            when(mouseAction.eventType) {
+                MouseEventType.MOUSE_PRESSED -> {
                     val temp = Layers.newBuilder()
                             .withSize(layer.size)
                             .build()
@@ -92,7 +91,7 @@ object DrawingExample {
                     maybeTemp = Maybe.of(temp)
                     gameArea.pushOverlayAt(temp, level)
                 }
-                MouseActionType.MOUSE_RELEASED -> {
+                MouseEventType.MOUSE_RELEASED -> {
                     maybePressed.map { pressedAt ->
                         val tempLayer = maybeTemp.get()
                         val pos = mouseAction.position - offset
@@ -106,7 +105,7 @@ object DrawingExample {
                         gameArea.removeOverlay(tempLayer, level)
                     }
                 }
-                MouseActionType.MOUSE_DRAGGED -> {
+                MouseEventType.MOUSE_DRAGGED -> {
                     maybePressed.map { pressedAt ->
                         val tempLayer = maybeTemp.get()
                         val pos = mouseAction.position - offset

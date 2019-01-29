@@ -1,10 +1,10 @@
 package org.hexworks.zircon.api.kotlin
 
 import org.hexworks.cobalt.datatypes.sam.Consumer
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.InputType
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.InputType
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
 
 inline fun Input.whenInputTypeIs(inputType: InputType, crossinline fn: (Input) -> Unit) {
     return this.whenInputTypeIs(inputType = inputType, fn = object : Consumer<Input> {

@@ -10,7 +10,7 @@ import org.hexworks.zircon.api.game.GameArea
 import org.hexworks.zircon.api.game.ProjectionMode
 import org.hexworks.zircon.api.graphics.BoxType
 import org.hexworks.zircon.api.graphics.Symbols
-import org.hexworks.zircon.api.input.InputType
+import org.hexworks.zircon.api.uievent.InputType
 import org.hexworks.zircon.api.kotlin.onKeyStroke
 import kotlin.random.Random
 

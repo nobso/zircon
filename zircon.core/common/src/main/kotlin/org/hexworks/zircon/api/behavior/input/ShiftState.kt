@@ -1,6 +1,6 @@
 package org.hexworks.zircon.api.behavior.input
 
-import org.hexworks.zircon.api.input.KeyStroke
+import org.hexworks.zircon.api.uievent.KeyStroke
 
 /**
  * Represents the state of the `Ctrl` button.

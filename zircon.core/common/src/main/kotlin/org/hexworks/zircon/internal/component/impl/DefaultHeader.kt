@@ -11,7 +11,7 @@ import org.hexworks.zircon.api.component.ComponentStyleSet
 import org.hexworks.zircon.api.component.Header
 import org.hexworks.zircon.api.component.data.ComponentMetadata
 import org.hexworks.zircon.api.component.renderer.ComponentRenderingStrategy
-import org.hexworks.zircon.api.input.Input
+import org.hexworks.zircon.api.uievent.Input
 
 class DefaultHeader(componentMetadata: ComponentMetadata,
                     initialText: String,

@@ -6,7 +6,7 @@ import org.hexworks.zircon.api.animation.AnimationResource
 import org.hexworks.zircon.api.builder.data.TileBuilder
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
-import org.hexworks.zircon.api.input.KeyStroke
+import org.hexworks.zircon.api.uievent.KeyStroke
 import org.hexworks.zircon.api.kotlin.onInput
 import org.hexworks.zircon.api.resource.BuiltInCP437TilesetResource
 import org.hexworks.zircon.api.resource.TilesetResource

@@ -9,7 +9,7 @@ sealed class ZirconEvent : Event {
     /**
      * A new input arrived into the system.
      */
-    data class Input(val input: org.hexworks.zircon.api.input.Input) : ZirconEvent()
+    data class Input(val input: org.hexworks.zircon.api.uievent.Input) : ZirconEvent()
 
     /**
      * Cursor is requested at the given `position`.

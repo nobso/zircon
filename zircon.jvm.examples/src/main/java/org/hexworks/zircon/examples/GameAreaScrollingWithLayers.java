@@ -19,7 +19,7 @@ import org.hexworks.zircon.api.graphics.Layer;
 import org.hexworks.zircon.api.graphics.Symbols;
 import org.hexworks.zircon.api.graphics.TileGraphics;
 import org.hexworks.zircon.api.grid.TileGrid;
-import org.hexworks.zircon.api.input.InputType;
+import org.hexworks.zircon.api.uievent.InputType;
 import org.hexworks.zircon.api.resource.BuiltInCP437TilesetResource;
 import org.hexworks.zircon.api.screen.Screen;
 import org.hexworks.zircon.internal.game.DefaultGameComponent;

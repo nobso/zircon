@@ -3,7 +3,7 @@ package org.hexworks.zircon.examples.events
 import org.hexworks.zircon.api.AppConfigs
 import org.hexworks.zircon.api.Sizes
 import org.hexworks.zircon.api.SwingApplications
-import org.hexworks.zircon.api.input.MouseAction
+import org.hexworks.zircon.api.uievent.MouseAction
 import org.hexworks.zircon.api.kotlin.onInput
 import org.hexworks.zircon.api.kotlin.onKeyStroke
 import org.hexworks.zircon.api.kotlin.onMousePressed

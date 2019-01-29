@@ -43,9 +43,6 @@ object NewInputHandlingDemo {
     }
 }
 
-/**
- * Interface for representing event types.
- */
 interface EventType
 
 enum class EventPhase {
@@ -54,12 +51,6 @@ enum class EventPhase {
     BUBBLE
 }
 
-
-/**
- * By having UIEvent as a interface we retain the ability to add
- * custom events
- * We can still use specific implementations like [MouseEventType] and [KeyboardEventType]
- */
 interface UIEvent {
     val type: EventType
 }
@@ -86,6 +77,32 @@ enum class KeyCode {
     Key_a, Key_b, Key_A, Key_1, Enter, Tab // ...
 }
 
+enum class KeyLocation {
+    /**
+     * Represents a key location which is unknown.
+     */
+    UNKNOWN,
+
+    /**
+     * Represents a key location where the key has no
+     * versions based on location and it not on the numpad.
+     */
+    STANDARD,
+
+    /**
+     * The left version of the key (e.g.: left alt)
+     */
+    LEFT,
+    /**
+     * The right version of the key (e.g.: right alt)
+     */
+    RIGHT,
+    /**
+     * Represents a location on the numpad.
+     */
+    NUMPAD;
+}
+
 data class MouseEvent(override val type: MouseEventType,
                       val button: Int,
                       val position: Position) : UIEvent
@@ -93,10 +110,37 @@ data class MouseEvent(override val type: MouseEventType,
 data class KeyboardEvent(override val type: KeyboardEventType,
                          val key: String,
                          val code: KeyCode,
+                         val keyLocation: KeyLocation,
                          val ctrlDown: Boolean = false,
                          val altDown: Boolean = false,
                          val metaDown: Boolean = false,
                          val shiftDown: Boolean = false) : UIEvent
+
+interface UIEventSource {
+
+    fun onMouseEvent(eventType: MouseEventType, fn: (MouseEvent, EventPhase) -> Boolean): Subscription
+
+    fun onKeyboardEvent(eventType: KeyboardEventType, fn: (KeyboardEvent, EventPhase) -> Boolean): Subscription
+}
+
+interface MouseEventListener {
+
+    fun mousePressed(event: MouseEvent, phase: EventPhase): Boolean = false
+
+    fun mouseReleased(event: MouseEvent, phase: EventPhase): Boolean = false
+
+    // ...
+
+}
+
+interface KeyboardEventListener {
+
+    fun keyPressed(event: KeyboardEvent, phase: EventPhase): Boolean = false
+
+    // ...
+
+}
+
 
 /**
  * Implements event propagation (capture, target, bubble). This is what
@@ -143,7 +187,7 @@ class EventDispatcher {
 class Component(val name: String,
                 private val defaultEventProcessor: DefaultEventProcessor = DefaultEventProcessor())
     : EventProcessor by defaultEventProcessor,
-        UIEventEmitter by defaultEventProcessor,
+        UIEventSource by defaultEventProcessor,
         KeyboardEventListener, MouseEventListener {
 
     init {
@@ -162,17 +206,7 @@ interface EventProcessor {
     fun process(event: UIEvent, phase: EventPhase): Boolean
 }
 
-interface UIEventEmitter {
-
-    fun onMouseEvent(eventType: MouseEventType, fn: (MouseEvent, EventPhase) -> Boolean): Subscription
-
-    fun onKeyboardEvent(eventType: KeyboardEventType, fn: (KeyboardEvent, EventPhase) -> Boolean): Subscription
-}
-
-/**
- * Processes [Event]s.
- */
-class DefaultEventProcessor : EventProcessor, UIEventEmitter {
+class DefaultEventProcessor : EventProcessor, UIEventSource {
 
     private val listeners = ThreadSafeMapFactory.create<EventType, ThreadSafeQueue<InputEventSubscription>>()
 
@@ -216,25 +250,6 @@ class DefaultEventProcessor : EventProcessor, UIEventEmitter {
             subscription
         }
     }
-}
-
-
-interface MouseEventListener {
-
-    fun mousePressed(event: MouseEvent, phase: EventPhase): Boolean = false
-
-    fun mouseReleased(event: MouseEvent, phase: EventPhase): Boolean = false
-
-    // ...
-
-}
-
-interface KeyboardEventListener {
-
-    fun keyPressed(event: KeyboardEvent, phase: EventPhase): Boolean = false
-
-    // ...
-
 }
 
 class InputEventSubscription(

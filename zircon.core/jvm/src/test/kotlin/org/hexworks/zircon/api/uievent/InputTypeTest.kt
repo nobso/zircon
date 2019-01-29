@@ -1,4 +1,4 @@
-package org.hexworks.zircon.api.input
+package org.hexworks.zircon.api.uievent
 
 import org.assertj.core.api.Assertions.assertThat
 import org.hexworks.cobalt.events.api.subscribe

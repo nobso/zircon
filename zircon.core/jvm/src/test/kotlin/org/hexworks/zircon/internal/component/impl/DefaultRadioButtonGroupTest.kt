@@ -12,8 +12,8 @@ import org.hexworks.zircon.api.component.renderer.ComponentRenderer
 import org.hexworks.zircon.api.component.renderer.impl.DefaultComponentRenderingStrategy
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
 import org.hexworks.zircon.api.kotlin.onSelection
 import org.hexworks.zircon.internal.component.renderer.DefaultRadioButtonGroupRenderer
 import org.junit.Before
@@ -132,6 +132,6 @@ class DefaultRadioButtonGroupTest : ComponentImplementationTest<DefaultRadioButt
         const val TEXT = "Button text"
         val POSITION = Position.create(4, 5)
         val SIZE = Size.create(10, 20)
-        val MOUSE_RELEASED = MouseAction(MouseActionType.MOUSE_RELEASED, 1, POSITION)
+        val MOUSE_RELEASED = MouseAction(MouseEventType.MOUSE_RELEASED, 1, POSITION)
     }
 }

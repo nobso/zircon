@@ -1,6 +1,6 @@
 package org.hexworks.zircon.api.listener
 
-import org.hexworks.zircon.api.input.MouseAction
+import org.hexworks.zircon.api.uievent.MouseAction
 
 /**
  * Adapter for [MouseListener] which has empty default

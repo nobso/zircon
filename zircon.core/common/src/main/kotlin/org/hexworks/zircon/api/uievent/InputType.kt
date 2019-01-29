@@ -1,4 +1,4 @@
-package org.hexworks.zircon.api.input
+package org.hexworks.zircon.api.uievent
 
 /**
  * This enum is a categorization of the various keys available on a normal computer keyboard that are usable
@@ -7,6 +7,7 @@ package org.hexworks.zircon.api.input
  * but please keep in mind that newline and tab, usually represented by \n and \t, are considered their own separate
  * values by this enum (*Enter* and *Tab*).
  */
+@Deprecated("No.")
 enum class InputType {
     /**
      * This value corresponds to a regular character 'typed', usually alphanumeric or a symbol.

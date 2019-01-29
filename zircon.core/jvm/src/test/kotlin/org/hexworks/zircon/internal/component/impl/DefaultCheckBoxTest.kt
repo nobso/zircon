@@ -13,8 +13,8 @@ import org.hexworks.zircon.api.component.renderer.ComponentRenderer
 import org.hexworks.zircon.api.component.renderer.impl.DefaultComponentRenderingStrategy
 import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
 import org.hexworks.zircon.internal.component.renderer.DefaultCheckBoxRenderer
 import org.junit.Before
 import org.junit.Test
@@ -100,7 +100,7 @@ class DefaultCheckBoxTest : ComponentImplementationTest<DefaultCheckBox>() {
 
     @Test
     fun shouldProperlyHandleMouseRelease() {
-        target.mouseReleased(MouseAction(MouseActionType.MOUSE_RELEASED, 1, Position.defaultPosition()))
+        target.mouseReleased(MouseAction(MouseEventType.MOUSE_RELEASED, 1, Position.defaultPosition()))
 
         assertThat(target.componentStyleSet.currentState()).isEqualTo(MOUSE_OVER)
     }

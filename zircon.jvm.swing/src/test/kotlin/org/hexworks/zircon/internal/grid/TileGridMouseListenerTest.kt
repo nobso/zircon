@@ -3,10 +3,10 @@ package org.hexworks.zircon.internal.grid
 import org.assertj.core.api.Assertions.assertThat
 import org.hexworks.cobalt.events.api.subscribe
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.event.ZirconEvent
 import org.hexworks.zircon.internal.event.ZirconScope
@@ -19,7 +19,7 @@ import java.util.*
 class TileGridMouseListenerTest {
 
     lateinit var target: TileGridMouseListener
-    lateinit var operations: Map<(MouseEvent) -> Unit, MouseActionType>
+    lateinit var operations: Map<(MouseEvent) -> Unit, MouseEventType>
 
     val inputs = LinkedList<Input>()
 
@@ -43,7 +43,7 @@ class TileGridMouseListenerTest {
         operations.forEach { (op, event) ->
             op.invoke(MOUSE_EVENT)
             assertThat(inputs.poll()).isEqualTo(MouseAction(
-                    actionType = event,
+                    eventType = event,
                     button = BUTTON,
                     position = POSITION))
 

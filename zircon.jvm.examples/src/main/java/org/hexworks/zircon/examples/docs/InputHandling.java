@@ -2,8 +2,8 @@ package org.hexworks.zircon.examples.docs;
 
 import org.hexworks.zircon.api.SwingApplications;
 import org.hexworks.zircon.api.grid.TileGrid;
-import org.hexworks.zircon.api.input.KeyStroke;
-import org.hexworks.zircon.api.input.MouseAction;
+import org.hexworks.zircon.api.uievent.KeyStroke;
+import org.hexworks.zircon.api.uievent.MouseAction;
 import org.hexworks.zircon.api.listener.MouseAdapter;
 import org.jetbrains.annotations.NotNull;
 

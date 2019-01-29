@@ -5,7 +5,7 @@ import org.hexworks.cobalt.datatypes.sam.Consumer
 import org.hexworks.cobalt.events.api.Subscription
 import org.hexworks.zircon.api.behavior.InputEmitter
 import org.hexworks.zircon.api.behavior.input.KeyCombination
-import org.hexworks.zircon.api.input.*
+import org.hexworks.zircon.api.uievent.*
 import org.hexworks.zircon.api.listener.InputListener
 import org.hexworks.zircon.api.listener.KeyStrokeListener
 import org.hexworks.zircon.api.listener.MouseListener
@@ -68,16 +68,16 @@ abstract class BaseInputEmitter : InputEmitter {
         return onInput(object : InputListener {
             override fun inputEmitted(input: Input) {
                 input.asMouseAction().map {
-                    when (it.actionType) {
-                        MouseActionType.MOUSE_CLICKED -> listener.mouseClicked(it)
-                        MouseActionType.MOUSE_PRESSED -> listener.mousePressed(it)
-                        MouseActionType.MOUSE_RELEASED -> listener.mouseReleased(it)
-                        MouseActionType.MOUSE_ENTERED -> listener.mouseEntered(it)
-                        MouseActionType.MOUSE_EXITED -> listener.mouseExited(it)
-                        MouseActionType.MOUSE_WHEEL_ROTATED_UP -> listener.mouseWheelRotatedUp(it)
-                        MouseActionType.MOUSE_WHEEL_ROTATED_DOWN -> listener.mouseWheelRotatedDown(it)
-                        MouseActionType.MOUSE_DRAGGED -> listener.mouseDragged(it)
-                        MouseActionType.MOUSE_MOVED -> listener.mouseMoved(it)
+                    when (it.eventType) {
+                        MouseEventType.MOUSE_CLICKED -> listener.mouseClicked(it)
+                        MouseEventType.MOUSE_PRESSED -> listener.mousePressed(it)
+                        MouseEventType.MOUSE_RELEASED -> listener.mouseReleased(it)
+                        MouseEventType.MOUSE_ENTERED -> listener.mouseEntered(it)
+                        MouseEventType.MOUSE_EXITED -> listener.mouseExited(it)
+                        MouseEventType.MOUSE_WHEEL_ROTATED_UP -> listener.mouseWheelRotatedUp(it)
+                        MouseEventType.MOUSE_WHEEL_ROTATED_DOWN -> listener.mouseWheelRotatedDown(it)
+                        MouseEventType.MOUSE_DRAGGED -> listener.mouseDragged(it)
+                        MouseEventType.MOUSE_MOVED -> listener.mouseMoved(it)
                     }
                 }
             }

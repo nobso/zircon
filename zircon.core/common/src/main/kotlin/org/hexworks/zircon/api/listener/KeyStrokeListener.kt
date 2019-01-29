@@ -1,6 +1,6 @@
 package org.hexworks.zircon.api.listener
 
-import org.hexworks.zircon.api.input.KeyStroke
+import org.hexworks.zircon.api.uievent.KeyStroke
 
 /**
  * Listener interface for [KeyStroke]s.

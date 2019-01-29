@@ -15,8 +15,8 @@ import org.hexworks.zircon.api.data.Size
 import org.hexworks.zircon.api.data.Snapshot
 import org.hexworks.zircon.api.graphics.Layer
 import org.hexworks.zircon.api.graphics.TileGraphics
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.MouseAction
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.MouseAction
 import org.hexworks.zircon.api.kotlin.addObserver
 import org.hexworks.zircon.api.listener.InputListener
 import org.hexworks.zircon.internal.Zircon

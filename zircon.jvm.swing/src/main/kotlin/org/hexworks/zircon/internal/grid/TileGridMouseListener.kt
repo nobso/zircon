@@ -1,10 +1,10 @@
 package org.hexworks.zircon.internal.grid
 
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.KeyStroke
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.KeyStroke
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.api.util.TextUtils
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.config.RuntimeConfig
@@ -68,18 +68,18 @@ open class TileGridMouseListener(private val fontWidth: Int,
         }
     }
 
-    private fun addActionToKeyQueue(actionType: MouseActionType, e: MouseEvent) {
+    private fun addActionToKeyQueue(eventType: MouseEventType, e: MouseEvent) {
         try {
             val position = Position.create(
                     x = Math.max(0, e.x.div(fontWidth)),
                     y = Math.max(0, e.y.div(fontHeight)))
             MouseAction(
-                    actionType = actionType,
+                    eventType = eventType,
                     button = e.button,
                     position = position
             ).let {
-                if (mouseMovedToNewPosition(actionType, position)
-                                .or(isNotMoveEvent(actionType))) {
+                if (mouseMovedToNewPosition(eventType, position)
+                                .or(isNotMoveEvent(eventType))) {
                     lastMouseLocation = position
                     Zircon.eventBus.publish(
                             event = ZirconEvent.Input(it),
@@ -92,10 +92,10 @@ open class TileGridMouseListener(private val fontWidth: Int,
         }
     }
 
-    private fun isNotMoveEvent(actionType: MouseActionType) = actionType != MOUSE_MOVED
+    private fun isNotMoveEvent(eventType: MouseEventType) = eventType != MOUSE_MOVED
 
-    private fun mouseMovedToNewPosition(actionType: MouseActionType, position: Position) =
-            actionType == MOUSE_MOVED && position != lastMouseLocation
+    private fun mouseMovedToNewPosition(eventType: MouseEventType, position: Position) =
+            eventType == MOUSE_MOVED && position != lastMouseLocation
 
     private fun pasteSelectionContent() {
         Toolkit.getDefaultToolkit().systemSelection?.let {

@@ -8,7 +8,7 @@ import org.hexworks.zircon.api.builder.application.AppConfigBuilder;
 import org.hexworks.zircon.api.color.ANSITileColor;
 import org.hexworks.zircon.api.data.Position;
 import org.hexworks.zircon.api.grid.TileGrid;
-import org.hexworks.zircon.api.input.InputType;
+import org.hexworks.zircon.api.uievent.InputType;
 import org.hexworks.zircon.api.resource.BuiltInCP437TilesetResource;
 
 import java.util.ArrayList;

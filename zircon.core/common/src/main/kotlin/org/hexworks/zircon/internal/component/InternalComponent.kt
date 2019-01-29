@@ -1,6 +1,7 @@
 package org.hexworks.zircon.internal.component
 
 import org.hexworks.cobalt.datatypes.Maybe
+import org.hexworks.cobalt.datatypes.extensions.flatMap
 import org.hexworks.cobalt.datatypes.extensions.map
 import org.hexworks.zircon.api.component.Component
 import org.hexworks.zircon.api.component.Container
@@ -61,6 +62,10 @@ interface InternalComponent : Component, Focusable, InputListener, KeyStrokeList
      * Returns the parent of this [Component] (if any).
      */
     fun fetchParent(): Maybe<Container>
+
+    fun calculatePathFromRoot(): List<Component> {
+        return listOf(fetchParent().flatMap { it.cPFR })
+    }
 
     /**
      * Renders this component to the underlying [TileGraphics].

@@ -3,8 +3,8 @@ package org.hexworks.zircon.internal.component.impl
 import org.assertj.core.api.Assertions.assertThat
 import org.hexworks.zircon.api.component.data.ComponentState.*
 import org.hexworks.zircon.api.data.Position
-import org.hexworks.zircon.api.input.MouseAction
-import org.hexworks.zircon.api.input.MouseActionType.*
+import org.hexworks.zircon.api.uievent.MouseAction
+import org.hexworks.zircon.api.uievent.MouseEventType.*
 import org.hexworks.zircon.internal.component.InternalComponent
 import org.junit.Test
 

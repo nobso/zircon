@@ -17,7 +17,7 @@ import org.hexworks.zircon.api.game.GameArea
 import org.hexworks.zircon.api.game.GameComponent
 import org.hexworks.zircon.api.game.ProjectionMode
 import org.hexworks.zircon.api.graphics.Layer
-import org.hexworks.zircon.api.input.Input
+import org.hexworks.zircon.api.uievent.Input
 import org.hexworks.zircon.internal.component.impl.DefaultComponent
 import org.hexworks.zircon.internal.component.renderer.NoOpComponentRenderer
 import kotlin.math.min

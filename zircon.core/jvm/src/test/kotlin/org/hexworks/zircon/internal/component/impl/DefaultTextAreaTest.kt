@@ -15,8 +15,8 @@ import org.hexworks.zircon.api.data.Position
 import org.hexworks.zircon.api.data.Size
 import org.hexworks.zircon.api.data.Tile
 import org.hexworks.zircon.api.graphics.StyleSet
-import org.hexworks.zircon.api.input.InputType.*
-import org.hexworks.zircon.api.input.KeyStroke
+import org.hexworks.zircon.api.uievent.InputType.*
+import org.hexworks.zircon.api.uievent.KeyStroke
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.component.renderer.DefaultTextAreaRenderer
 import org.hexworks.zircon.internal.event.ZirconEvent

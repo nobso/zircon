@@ -16,10 +16,9 @@ import org.hexworks.zircon.api.game.GameModifiers.*
 import org.hexworks.zircon.api.game.ProjectionMode
 import org.hexworks.zircon.api.graphics.BoxType
 import org.hexworks.zircon.api.graphics.Symbols
-import org.hexworks.zircon.api.input.Input
-import org.hexworks.zircon.api.input.InputType
+import org.hexworks.zircon.api.uievent.Input
+import org.hexworks.zircon.api.uievent.InputType
 import org.hexworks.zircon.api.listener.InputListener
-import org.hexworks.zircon.api.resource.BuiltInTrueTypeFontResource
 import org.hexworks.zircon.api.screen.Screen
 import org.hexworks.zircon.internal.game.InMemoryGameArea
 import java.util.*

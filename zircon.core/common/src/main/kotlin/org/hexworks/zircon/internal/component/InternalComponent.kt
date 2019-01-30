@@ -64,7 +64,8 @@ interface InternalComponent : Component, Focusable, InputListener, KeyStrokeList
     fun fetchParent(): Maybe<Container>
 
     fun calculatePathFromRoot(): List<Component> {
-        return listOf(fetchParent().flatMap { it.cPFR })
+        val parent = fetchParent()
+        TODO()
     }
 
     /**
